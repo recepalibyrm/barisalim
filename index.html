@@ -2,244 +2,222 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Bir şey soracağım 🤍</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
     *{
       box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    html, body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
     }
 
     body{
-      margin:0;
       font-family:'Poppins',sans-serif;
       background:linear-gradient(135deg,#ffd6e7,#ffeaf3);
-      height:100vh;
-      overflow:hidden;
+      position:relative;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      position:relative;
     }
 
-    .start h1{
-      font-family:'Great Vibes',cursive;
-      font-size:50px;
-      color:#d63384;
-      min-height:70px;
-      padding:0 18px;
-    }
-
-    .startButtons{
-      margin-top:20px;
-    }
-
-    .startYes,.startNo{
-      padding:12px 22px;
-      font-size:18px;
-      border:none;
-      border-radius:14px;
-      margin:8px;
-      cursor:pointer;
-      box-shadow:0 8px 20px rgba(0,0,0,0.12);
-    }
-
-    .startYes{
-      background:#28a745;
-      color:white;
-    }
-
-    .startNo{
-      background:#dc3545;
-      color:white;
-    }
-
-    .container{
-      display:none;
+    .screen{
+      width:100%;
+      padding:20px;
       position:relative;
       z-index:20;
     }
 
-    .container h2{
+    .start h1,
+    .main h2{
       font-family:'Great Vibes',cursive;
-      font-size:52px;
       color:#d63384;
-      margin:0 0 24px;
-      padding:0 16px;
-      text-shadow:0 2px 10px rgba(255,255,255,0.4);
+      margin:0 0 18px;
+      line-height:1.1;
+      text-shadow:0 2px 10px rgba(255,255,255,.35);
     }
 
-    .buttons{
-      position:fixed;
-      left:50%;
-      bottom:88px;
-      transform:translateX(-50%);
-      z-index:9999;
+    .start h1{
+      font-size:44px;
+      min-height:58px;
+    }
+
+    .main h2{
+      font-size:48px;
+      padding:0 10px;
+    }
+
+    .start-buttons{
       display:flex;
-      align-items:center;
       justify-content:center;
-      gap:12px;
+      align-items:center;
+      gap:10px;
       flex-wrap:wrap;
-      width:min(92vw,420px);
+      margin-top:12px;
     }
 
-    button{
-      padding:12px 24px;
-      font-size:18px;
+    .start-btn,
+    #yes,
+    #no{
       border:none;
-      border-radius:14px;
+      border-radius:16px;
+      padding:12px 20px;
+      font-size:17px;
+      font-weight:600;
+      color:#fff;
       cursor:pointer;
-      box-shadow:0 8px 20px rgba(0,0,0,0.16);
-      -webkit-tap-highlight-color:transparent;
+      box-shadow:0 8px 20px rgba(0,0,0,.14);
+      touch-action:manipulation;
+    }
+
+    .start-yes,
+    #yes{
+      background:#28a745;
+    }
+
+    .start-no,
+    #no{
+      background:#dc3545;
+    }
+
+    .main{
+      display:none;
+    }
+
+    .buttons-layer{
+      position:fixed;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      z-index:10000;
     }
 
     #yes{
-      background:#28a745;
-      color:white;
-      position:relative;
-      z-index:10000;
-      transition:font-size .2s ease, transform .2s ease;
+      position:fixed;
+      left:50%;
+      bottom:78px;
+      transform:translateX(calc(-100% - 10px));
+      pointer-events:auto;
+      transition:font-size .18s ease, transform .18s ease;
+      white-space:nowrap;
+      max-width:42vw;
     }
 
     #no{
-      background:#dc3545;
-      color:white;
       position:fixed;
-      z-index:10000;
-      transition:left .18s ease, top .18s ease;
+      left:50%;
+      bottom:78px;
+      transform:translateX(10px);
+      pointer-events:auto;
+      white-space:nowrap;
+      max-width:44vw;
     }
 
     .photo{
       position:fixed;
-      width:130px;
-      background:white;
+      width:112px;
+      background:#fff;
       padding:6px;
       border-radius:10px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.22);
+      box-shadow:0 10px 25px rgba(0,0,0,.22);
       z-index:2;
-      animation:rise 6s linear forwards;
-      transform-origin:center center;
+      animation:photoPop .35s ease;
+      overflow:hidden;
     }
 
     .photo img{
+      display:block;
       width:100%;
       height:auto;
-      display:block;
       border-radius:6px;
     }
 
     .caption{
-      font-size:11px;
-      margin-top:6px;
+      font-size:10px;
       color:#444;
+      margin-top:5px;
       text-align:center;
     }
 
-    @keyframes rise{
-      0%{
-        opacity:0;
-        transform:translateY(100px) scale(.9);
-      }
-      10%{
-        opacity:1;
-      }
-      100%{
-        opacity:1;
-        transform:translateY(-40px);
-      }
-    }
-
-    .final{
-      position:fixed;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%) scale(.92);
-      font-family:'Great Vibes',cursive;
-      font-size:46px;
-      color:white;
-      background:rgba(0,0,0,0.82);
-      padding:28px 34px;
-      border-radius:24px;
-      box-shadow:0 12px 35px rgba(0,0,0,0.35);
-      display:none;
-      z-index:99999;
-      width:min(88vw,520px);
-      text-align:center;
-      backdrop-filter:blur(4px);
-      animation:finalPop .45s ease forwards;
-    }
-
-    @keyframes finalPop{
+    @keyframes photoPop{
       from{
         opacity:0;
-        transform:translate(-50%,-50%) scale(.92);
+        transform:scale(.85) rotate(0deg);
       }
       to{
         opacity:1;
-        transform:translate(-50%,-50%) scale(1);
-      }
-    }
-
-    .heart{
-      position:fixed;
-      font-size:26px;
-      pointer-events:none;
-      z-index:99998;
-      animation:float 3.8s linear forwards;
-    }
-
-    @keyframes float{
-      0%{
-        transform:translateY(0) scale(1);
-        opacity:1;
-      }
-      100%{
-        transform:translateY(-85vh) scale(1.7);
-        opacity:0;
       }
     }
 
     .fade-bg{
       position:fixed;
       inset:0;
-      background:rgba(255,255,255,0.12);
+      background:rgba(255,255,255,.10);
+      backdrop-filter:blur(2px);
       display:none;
       z-index:99990;
-      backdrop-filter:blur(2px);
     }
 
-    @media (max-width:600px){
-      .start h1{
-        font-size:42px;
-        min-height:60px;
-      }
+    .final{
+      position:fixed;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:min(88vw,520px);
+      padding:24px 20px;
+      border-radius:24px;
+      background:rgba(0,0,0,.84);
+      color:#fff;
+      font-family:'Great Vibes',cursive;
+      font-size:40px;
+      line-height:1.2;
+      box-shadow:0 14px 34px rgba(0,0,0,.35);
+      display:none;
+      z-index:99999;
+    }
 
-      .container h2{
-        font-size:44px;
-      }
+    .heart{
+      position:fixed;
+      bottom:-20px;
+      font-size:24px;
+      z-index:99998;
+      pointer-events:none;
+      animation:floatUp 3.8s linear forwards;
+    }
 
-      .buttons{
-        bottom:72px;
-        width:min(94vw,360px);
+    @keyframes floatUp{
+      from{
+        transform:translateY(0) scale(1);
+        opacity:1;
       }
-
-      button,
-      .startYes,.startNo{
-        font-size:17px;
-        padding:12px 20px;
+      to{
+        transform:translateY(-85vh) scale(1.7);
+        opacity:0;
       }
+    }
 
+    @media (min-width: 700px){
+      .start h1{ font-size:62px; min-height:74px; }
+      .main h2{ font-size:68px; }
+      .start-btn, #yes, #no{
+        font-size:19px;
+        padding:14px 24px;
+      }
       .photo{
-        width:112px;
+        width:132px;
       }
-
       .final{
-        font-size:38px;
-        padding:24px 22px;
-        width:min(90vw,420px);
+        font-size:48px;
       }
     }
   </style>
@@ -252,36 +230,40 @@
 
   <div class="fade-bg" id="fadeBg"></div>
 
-  <div class="start" id="startScreen">
+  <div class="screen start" id="startScreen">
     <h1 id="typeText"></h1>
-    <div class="startButtons">
-      <button class="startYes" onclick="startSite()">Evet</button>
-      <button class="startNo" onclick="startSite()">Sorucam kaçarın yok</button>
+    <div class="start-buttons">
+      <button class="start-btn start-yes" onclick="startSite()">Evet</button>
+      <button class="start-btn start-no" onclick="startSite()">Sorucam kaçarın yok</button>
     </div>
   </div>
 
-  <div class="container" id="mainSite">
+  <div class="screen main" id="mainSite">
     <h2>Barışalım mı? 🤍</h2>
-    <div class="buttons" id="buttonWrap">
-      <button id="yes">Evet</button>
-      <button id="no">Hayır</button>
-    </div>
+  </div>
+
+  <div class="buttons-layer" id="buttonsLayer">
+    <button id="yes">Evet</button>
+    <button id="no">Hayır</button>
   </div>
 
   <div class="final" id="finalText">Biliyodum barışacağını zaten 🤍</div>
 
   <script>
     const music = document.getElementById("music");
+    const startScreen = document.getElementById("startScreen");
+    const mainSite = document.getElementById("mainSite");
+    const buttonsLayer = document.getElementById("buttonsLayer");
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
     const finalText = document.getElementById("finalText");
     const fadeBg = document.getElementById("fadeBg");
-    const mainSite = document.getElementById("mainSite");
-    const buttonWrap = document.getElementById("buttonWrap");
+    const typeText = document.getElementById("typeText");
 
     let grow = 0;
     let photosShown = [];
     let heartInterval = null;
+    let started = false;
 
     const images = [
       "1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg",
@@ -301,23 +283,36 @@
     ];
 
     function startSite(){
-      document.getElementById("startScreen").style.display = "none";
+      if(started) return;
+      started = true;
+
+      startScreen.style.display = "none";
       mainSite.style.display = "block";
+      buttonsLayer.style.display = "block";
 
-      const yesRect = yesBtn.getBoundingClientRect();
-      noBtn.style.left = (yesRect.right + 12) + "px";
-      noBtn.style.top = yesRect.top + "px";
-
+      placeButtonsInitial();
       music.play().catch(() => {});
     }
 
-    const text = "Sana bir şey sorabilir miyim?";
-    let i = 0;
+    function placeButtonsInitial(){
+      yesBtn.style.left = "50%";
+      yesBtn.style.bottom = "78px";
+      yesBtn.style.top = "auto";
+      yesBtn.style.transform = "translateX(calc(-100% - 10px))";
+
+      noBtn.style.left = "50%";
+      noBtn.style.bottom = "78px";
+      noBtn.style.top = "auto";
+      noBtn.style.transform = "translateX(10px)";
+    }
+
+    const typingSentence = "Sana bir şey sorabilir miyim?";
+    let typeIndex = 0;
 
     function typeWriter(){
-      if(i < text.length){
-        document.getElementById("typeText").innerHTML += text.charAt(i);
-        i++;
+      if(typeIndex < typingSentence.length){
+        typeText.innerHTML += typingSentence.charAt(typeIndex);
+        typeIndex++;
         setTimeout(typeWriter, 60);
       }
     }
@@ -328,65 +323,73 @@
     }
 
     function moveNoButton(){
+      noBtn.style.transform = "none";
+      noBtn.style.bottom = "auto";
+
       const btnW = noBtn.offsetWidth || 90;
-      const btnH = noBtn.offsetHeight || 44;
+      const btnH = noBtn.offsetHeight || 46;
 
-      const minX = 12;
-      const maxX = window.innerWidth - btnW - 12;
+      const margin = 12;
+      const topSafe = 92;
+      const bottomSafe = 92;
 
-      const topLimit = 90;
-      const bottomReserved = 130;
-      const minY = topLimit;
-      const maxY = window.innerHeight - btnH - bottomReserved;
+      const minX = margin;
+      const maxX = Math.max(margin, window.innerWidth - btnW - margin);
 
-      const safeMaxX = Math.max(minX, maxX);
-      const safeMaxY = Math.max(minY, maxY);
+      const minY = topSafe;
+      const maxY = Math.max(topSafe, window.innerHeight - btnH - bottomSafe);
 
-      const x = Math.random() * (safeMaxX - minX) + minX;
-      const y = Math.random() * (safeMaxY - minY) + minY;
+      const x = Math.random() * (maxX - minX) + minX;
+      const y = Math.random() * (maxY - minY) + minY;
 
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
+      noBtn.style.position = "fixed";
     }
 
-    noBtn.onclick = () => {
-      grow += 20;
-      yesBtn.style.fontSize = (18 + grow) + "px";
-      yesBtn.style.transform = "scale(1.02)";
-
-      moveNoButton();
-      showPhoto();
-    };
-
     function showPhoto(){
+      const card = document.createElement("div");
+      card.className = "photo";
+
       const img = randomFrom(images);
       const text = randomFrom(texts);
 
-      const div = document.createElement("div");
-      div.className = "photo";
+      const cardWidth = window.innerWidth >= 700 ? 132 : 112;
+      const estimatedHeight = cardWidth * 1.45;
 
-      const width = window.innerWidth <= 600 ? 112 : 130;
-      const photoHeightApprox = width * 1.45;
+      const xMargin = 10;
+      const yTop = 56;
+      const yBottomReserve = 130;
 
-      const x = Math.random() * Math.max(20, (window.innerWidth - width - 20)) + 10;
-      const y = Math.random() * Math.max(40, (window.innerHeight - photoHeightApprox - 150)) + 50;
+      const x = Math.random() * Math.max(10, (window.innerWidth - cardWidth - xMargin * 2)) + xMargin;
+      const y = Math.random() * Math.max(10, (window.innerHeight - estimatedHeight - yTop - yBottomReserve)) + yTop;
       const rotate = Math.random() * 28 - 14;
 
-      div.style.left = x + "px";
-      div.style.top = y + "px";
-      div.style.transform = `rotate(${rotate}deg)`;
+      card.style.left = x + "px";
+      card.style.top = y + "px";
+      card.style.transform = `rotate(${rotate}deg)`;
 
-      div.innerHTML = `
+      card.innerHTML = `
         <img src="${img}" alt="">
         <div class="caption">${text}</div>
       `;
 
-      document.body.appendChild(div);
-      photosShown.push(div);
+      document.body.appendChild(card);
+      photosShown.push(card);
     }
 
-    yesBtn.onclick = () => {
-      buttonWrap.style.display = "none";
+    noBtn.addEventListener("click", () => {
+      grow += 20;
+      yesBtn.style.fontSize = (17 + grow) + "px";
+
+      showPhoto();
+      moveNoButton();
+    });
+
+    yesBtn.addEventListener("click", () => {
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
+      mainSite.style.display = "none";
       fadeBg.style.display = "block";
 
       arrangePhotosAsHeart();
@@ -395,10 +398,11 @@
       setTimeout(() => {
         finalText.style.display = "block";
       }, 350);
-    };
+    });
 
     function arrangePhotosAsHeart(){
       if(photosShown.length === 0){
+        showPhoto();
         showPhoto();
         showPhoto();
         showPhoto();
@@ -411,16 +415,16 @@
 
       photosShown.forEach((photo, index) => {
         const t = (Math.PI * 2 * index) / count;
-        const x = 16 * Math.pow(Math.sin(t), 3);
-        const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+        const hx = 16 * Math.pow(Math.sin(t), 3);
+        const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
 
-        const px = centerX + x * scale - photo.offsetWidth / 2;
-        const py = centerY + y * scale - photo.offsetHeight / 2;
+        const px = centerX + hx * scale - photo.offsetWidth / 2;
+        const py = centerY + hy * scale - photo.offsetHeight / 2;
 
-        photo.style.transition = "left 0.9s ease, top 0.9s ease, transform 0.9s ease";
+        photo.style.transition = "left .9s ease, top .9s ease, transform .9s ease";
         photo.style.left = px + "px";
         photo.style.top = py + "px";
-        photo.style.transform = `rotate(${Math.random() * 16 - 8}deg)`;
+        photo.style.transform = `rotate(${Math.random() * 14 - 7}deg)`;
         photo.style.zIndex = "99991";
       });
     }
@@ -433,22 +437,20 @@
         heart.className = "heart";
         heart.innerHTML = "❤️";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.bottom = "-20px";
         document.body.appendChild(heart);
 
         setTimeout(() => {
           heart.remove();
         }, 3800);
-      }, 180);
+      }, 170);
     }
 
     window.addEventListener("resize", () => {
-      const finalOpen = finalText.style.display === "block";
-      if(finalOpen){
+      if(finalText.style.display === "block"){
         arrangePhotosAsHeart();
-      } else {
-        const noRect = noBtn.getBoundingClientRect();
-        if(noRect.right > window.innerWidth || noRect.bottom > window.innerHeight){
+      } else if(started){
+        const rect = noBtn.getBoundingClientRect();
+        if(rect.right > window.innerWidth || rect.bottom > window.innerHeight || rect.left < 0 || rect.top < 0){
           moveNoButton();
         }
       }
