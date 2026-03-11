@@ -12,53 +12,28 @@
 
 body{
 margin:0;
-height:100vh;
-overflow:hidden;
 font-family:'Poppins',sans-serif;
 background:linear-gradient(135deg,#ffd6e7,#ffeaf3);
+height:100vh;
+overflow:hidden;
 display:flex;
 align-items:center;
 justify-content:center;
-}
-
-/* başlangıç ekranı */
-
-.start{
 text-align:center;
 }
+
+/* başlangıç */
 
 .start h1{
 font-family:'Great Vibes';
-font-size:80px;
+font-size:50px;
 color:#d63384;
-}
-
-.start button{
-padding:15px 35px;
-font-size:22px;
-border:none;
-border-radius:15px;
-cursor:pointer;
-margin:10px;
-}
-
-/* ana ekran */
-
-.container{
-text-align:center;
-display:none;
-}
-
-.container h2{
-font-family:'Great Vibes';
-font-size:80px;
-color:#d63384;
-margin-bottom:40px;
+padding:20px;
 }
 
 button{
-padding:15px 35px;
-font-size:22px;
+padding:12px 28px;
+font-size:18px;
 border:none;
 border-radius:15px;
 cursor:pointer;
@@ -76,40 +51,69 @@ color:white;
 position:absolute;
 }
 
+.container{
+display:none;
+}
+
+.container h2{
+font-family:'Great Vibes';
+font-size:50px;
+color:#d63384;
+padding:20px;
+}
+
+/* foto kart */
+
 .photo{
 position:absolute;
-width:220px;
+width:130px;
 background:white;
-padding:10px;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.25);
-z-index:1;
+padding:6px;
+border-radius:8px;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+animation:story 6s linear;
 }
 
 .photo img{
 width:100%;
-border-radius:6px;
+border-radius:5px;
 }
 
 .caption{
-font-size:14px;
-margin-top:5px;
-text-align:center;
+font-size:11px;
 }
 
-/* final mesaj */
+@keyframes story{
+
+0%{
+transform:translateY(100vh) rotate(-10deg);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) rotate(10deg);
+opacity:0;
+}
+
+}
+
+/* final */
 
 .final{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-font-size:70px;
 font-family:'Great Vibes';
+font-size:50px;
 color:#d63384;
 display:none;
 z-index:9999;
-text-align:center;
+padding:20px;
 }
 
 /* kalpler */
@@ -121,14 +125,17 @@ animation:float 4s linear infinite;
 }
 
 @keyframes float{
+
 0%{
-transform:translateY(0) scale(1);
+transform:translateY(0);
 opacity:1;
 }
+
 100%{
-transform:translateY(-800px) scale(2);
+transform:translateY(-900px);
 opacity:0;
 }
+
 }
 
 </style>
@@ -141,10 +148,12 @@ opacity:0;
 </audio>
 
 <div class="start" id="startScreen">
+
 <h1>Sana bir şey sorabilir miyim?</h1>
 
 <button onclick="startSite()">Evet</button>
 <button onclick="startSite()">Hayır</button>
+
 </div>
 
 <div class="container" id="mainSite">
@@ -162,12 +171,12 @@ Biliyodum barışacağını zaten 🤍
 
 <script>
 
-let music = document.getElementById("music")
-let yesBtn = document.getElementById("yes")
-let noBtn = document.getElementById("no")
-let finalText = document.getElementById("finalText")
+let music=document.getElementById("music")
+let yesBtn=document.getElementById("yes")
+let noBtn=document.getElementById("no")
+let finalText=document.getElementById("finalText")
 
-let grow = 0
+let grow=0
 
 function startSite(){
 
@@ -178,13 +187,13 @@ music.play()
 
 }
 
-let images = [
+let images=[
 "1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg",
 "7.jpeg","8.jpeg","9.jpeg","10.jpeg","11.jpeg","12.jpeg",
 "13.jpeg","14.jpeg","15.jpeg","16.jpeg","17.jpeg","18.jpeg"
 ]
 
-let texts = [
+let texts=[
 "Bir daha düşün bence 🙂",
 "Buna da mı hayır diyeceksin?",
 "Bak ne kadar tatlıyız 🤍",
@@ -195,40 +204,39 @@ let texts = [
 "Bu fotoğrafa da mı hayır?"
 ]
 
-noBtn.onclick = () => {
+function moveNo(){
 
-grow += 20
-yesBtn.style.fontSize = (22 + grow) + "px"
+let x=Math.random()*(window.innerWidth-100)
+let y=Math.random()*(window.innerHeight-100)
 
-moveNoButton()
+noBtn.style.left=x+"px"
+noBtn.style.top=y+"px"
+
+}
+
+noBtn.addEventListener("touchstart",moveNo)
+noBtn.addEventListener("mouseover",moveNo)
+
+noBtn.onclick=()=>{
+
+grow+=20
+yesBtn.style.fontSize=(18+grow)+"px"
 
 showPhoto()
 
 }
 
-function moveNoButton(){
-
-let x = Math.random() * (window.innerWidth - 100)
-let y = Math.random() * (window.innerHeight - 50)
-
-noBtn.style.left = x + "px"
-noBtn.style.top = y + "px"
-
-}
-
 function showPhoto(){
 
-let img = images[Math.floor(Math.random()*images.length)]
-let text = texts[Math.floor(Math.random()*texts.length)]
+let img=images[Math.floor(Math.random()*images.length)]
+let text=texts[Math.floor(Math.random()*texts.length)]
 
-let div = document.createElement("div")
+let div=document.createElement("div")
 div.className="photo"
 
-div.style.left = Math.random()*80 + "%"
-div.style.top = Math.random()*80 + "%"
-div.style.transform = "rotate("+(Math.random()*30-15)+"deg)"
+div.style.left=Math.random()*80+"%"
 
-div.innerHTML = `
+div.innerHTML=`
 <img src="${img}">
 <div class="caption">${text}</div>
 `
@@ -237,7 +245,7 @@ document.body.appendChild(div)
 
 }
 
-yesBtn.onclick = () => {
+yesBtn.onclick=()=>{
 
 document.getElementById("mainSite").style.display="none"
 
@@ -251,7 +259,7 @@ function startHearts(){
 
 setInterval(()=>{
 
-let heart = document.createElement("div")
+let heart=document.createElement("div")
 
 heart.className="heart"
 
