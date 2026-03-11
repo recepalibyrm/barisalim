@@ -76,6 +76,7 @@
       cursor:pointer;
       box-shadow:0 8px 20px rgba(0,0,0,.14);
       touch-action:manipulation;
+      white-space:nowrap;
     }
 
     .start-yes,
@@ -100,27 +101,29 @@
       height:100%;
       pointer-events:none;
       z-index:10000;
+      display:none;
+    }
+
+    #yes,
+    #no{
+      position:fixed;
+      pointer-events:auto;
+      max-width:none;
+      min-width:92px;
     }
 
     #yes{
-      position:fixed;
       left:50%;
       bottom:78px;
       transform:translateX(calc(-100% - 10px));
-      pointer-events:auto;
-      transition:font-size .18s ease, transform .18s ease;
-      white-space:nowrap;
-      max-width:42vw;
+      transition:left .18s ease, top .18s ease, transform .18s ease;
     }
 
     #no{
-      position:fixed;
       left:50%;
       bottom:78px;
       transform:translateX(10px);
-      pointer-events:auto;
-      white-space:nowrap;
-      max-width:44vw;
+      transition:left .18s ease, top .18s ease, transform .18s ease;
     }
 
     .photo{
@@ -152,7 +155,6 @@
     @keyframes photoPop{
       from{
         opacity:0;
-        transform:scale(.85) rotate(0deg);
       }
       to{
         opacity:1;
@@ -184,6 +186,7 @@
       box-shadow:0 14px 34px rgba(0,0,0,.35);
       display:none;
       z-index:99999;
+      text-align:center;
     }
 
     .heart{
@@ -206,19 +209,15 @@
       }
     }
 
-    @media (min-width: 700px){
+    @media (min-width:700px){
       .start h1{ font-size:62px; min-height:74px; }
       .main h2{ font-size:68px; }
       .start-btn, #yes, #no{
         font-size:19px;
         padding:14px 24px;
       }
-      .photo{
-        width:132px;
-      }
-      .final{
-        font-size:48px;
-      }
+      .photo{ width:132px; }
+      .final{ font-size:48px; }
     }
   </style>
 </head>
@@ -260,7 +259,7 @@
     const fadeBg = document.getElementById("fadeBg");
     const typeText = document.getElementById("typeText");
 
-    let grow = 0;
+    let noCount = 0;
     let photosShown = [];
     let heartInterval = null;
     let started = false;
@@ -290,20 +289,26 @@
       mainSite.style.display = "block";
       buttonsLayer.style.display = "block";
 
-      placeButtonsInitial();
+      resetButtons();
       music.play().catch(() => {});
     }
 
-    function placeButtonsInitial(){
+    function resetButtons(){
+      noCount = 0;
+
+      yesBtn.style.fontSize = "";
+      yesBtn.style.padding = "";
       yesBtn.style.left = "50%";
+      yesBtn.style.top = "";
       yesBtn.style.bottom = "78px";
-      yesBtn.style.top = "auto";
       yesBtn.style.transform = "translateX(calc(-100% - 10px))";
+      yesBtn.style.display = "inline-block";
 
       noBtn.style.left = "50%";
+      noBtn.style.top = "";
       noBtn.style.bottom = "78px";
-      noBtn.style.top = "auto";
       noBtn.style.transform = "translateX(10px)";
+      noBtn.style.display = "inline-block";
     }
 
     const typingSentence = "Sana bir şey sorabilir miyim?";
@@ -344,7 +349,15 @@
 
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
-      noBtn.style.position = "fixed";
+    }
+
+    function resizeYesButton(){
+      const fontSize = Math.min(17 + noCount * 4, 34);
+      const padY = Math.min(12 + noCount * 0.8, 20);
+      const padX = Math.min(20 + noCount * 1.8, 34);
+
+      yesBtn.style.fontSize = fontSize + "px";
+      yesBtn.style.padding = padY + "px " + padX + "px";
     }
 
     function showPhoto(){
@@ -379,9 +392,8 @@
     }
 
     noBtn.addEventListener("click", () => {
-      grow += 20;
-      yesBtn.style.fontSize = (17 + grow) + "px";
-
+      noCount++;
+      resizeYesButton();
       showPhoto();
       moveNoButton();
     });
