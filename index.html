@@ -1,346 +1,458 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bir şey soracağım 🤍</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
-<title>Bir şey soracağım 🤍</title>
+  <style>
+    *{
+      box-sizing:border-box;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(135deg,#ffd6e7,#ffeaf3);
+      height:100vh;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+    }
 
-<style>
+    .start h1{
+      font-family:'Great Vibes',cursive;
+      font-size:50px;
+      color:#d63384;
+      min-height:70px;
+      padding:0 18px;
+    }
 
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#ffd6e7,#ffeaf3);
-height:100vh;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-}
+    .startButtons{
+      margin-top:20px;
+    }
 
-/* başlangıç */
+    .startYes,.startNo{
+      padding:12px 22px;
+      font-size:18px;
+      border:none;
+      border-radius:14px;
+      margin:8px;
+      cursor:pointer;
+      box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    }
 
-.start h1{
-font-family:'Great Vibes';
-font-size:50px;
-color:#d63384;
-min-height:70px;
-}
+    .startYes{
+      background:#28a745;
+      color:white;
+    }
 
-.startButtons{
-margin-top:20px;
-}
+    .startNo{
+      background:#dc3545;
+      color:white;
+    }
 
-.startYes,.startNo{
-padding:12px 25px;
-font-size:18px;
-border:none;
-border-radius:14px;
-margin:10px;
-cursor:pointer;
-}
+    .container{
+      display:none;
+      position:relative;
+      z-index:20;
+    }
 
-.startYes{background:#28a745;color:white;}
-.startNo{background:#dc3545;color:white;}
+    .container h2{
+      font-family:'Great Vibes',cursive;
+      font-size:52px;
+      color:#d63384;
+      margin:0 0 24px;
+      padding:0 16px;
+      text-shadow:0 2px 10px rgba(255,255,255,0.4);
+    }
 
-/* ana ekran */
+    .buttons{
+      position:fixed;
+      left:50%;
+      bottom:88px;
+      transform:translateX(-50%);
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      width:min(92vw,420px);
+    }
 
-.container{
-display:none;
-}
+    button{
+      padding:12px 24px;
+      font-size:18px;
+      border:none;
+      border-radius:14px;
+      cursor:pointer;
+      box-shadow:0 8px 20px rgba(0,0,0,0.16);
+      -webkit-tap-highlight-color:transparent;
+    }
 
-.container h2{
-font-family:'Great Vibes';
-font-size:50px;
-color:#d63384;
-}
+    #yes{
+      background:#28a745;
+      color:white;
+      position:relative;
+      z-index:10000;
+      transition:font-size .2s ease, transform .2s ease;
+    }
 
-/* butonlar */
+    #no{
+      background:#dc3545;
+      color:white;
+      position:fixed;
+      z-index:10000;
+      transition:left .18s ease, top .18s ease;
+    }
 
-.buttons{
-position:fixed;
-bottom:120px;
-left:50%;
-transform:translateX(-50%);
-z-index:9999;
-}
+    .photo{
+      position:fixed;
+      width:130px;
+      background:white;
+      padding:6px;
+      border-radius:10px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.22);
+      z-index:2;
+      animation:rise 6s linear forwards;
+      transform-origin:center center;
+    }
 
-button{
-padding:12px 25px;
-font-size:18px;
-border:none;
-border-radius:14px;
-margin:10px;
-cursor:pointer;
-}
+    .photo img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:6px;
+    }
 
-#yes{background:#28a745;color:white;}
-#no{background:#dc3545;color:white;}
+    .caption{
+      font-size:11px;
+      margin-top:6px;
+      color:#444;
+      text-align:center;
+    }
 
-/* foto */
+    @keyframes rise{
+      0%{
+        opacity:0;
+        transform:translateY(100px) scale(.9);
+      }
+      10%{
+        opacity:1;
+      }
+      100%{
+        opacity:1;
+        transform:translateY(-40px);
+      }
+    }
 
-.photo{
-position:absolute;
-width:130px;
-background:white;
-padding:6px;
-border-radius:8px;
-box-shadow:0 8px 20px rgba(0,0,0,0.25);
-animation:rise 6s linear;
-z-index:1;
-}
+    .final{
+      position:fixed;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%) scale(.92);
+      font-family:'Great Vibes',cursive;
+      font-size:46px;
+      color:white;
+      background:rgba(0,0,0,0.82);
+      padding:28px 34px;
+      border-radius:24px;
+      box-shadow:0 12px 35px rgba(0,0,0,0.35);
+      display:none;
+      z-index:99999;
+      width:min(88vw,520px);
+      text-align:center;
+      backdrop-filter:blur(4px);
+      animation:finalPop .45s ease forwards;
+    }
 
-.photo img{
-width:100%;
-border-radius:6px;
-}
+    @keyframes finalPop{
+      from{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(.92);
+      }
+      to{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+      }
+    }
 
-.caption{
-font-size:11px;
-}
+    .heart{
+      position:fixed;
+      font-size:26px;
+      pointer-events:none;
+      z-index:99998;
+      animation:float 3.8s linear forwards;
+    }
 
-@keyframes rise{
+    @keyframes float{
+      0%{
+        transform:translateY(0) scale(1);
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-85vh) scale(1.7);
+        opacity:0;
+      }
+    }
 
-0%{transform:translateY(100vh) rotate(-10deg);opacity:0;}
-10%{opacity:1;}
-100%{transform:translateY(-120vh) rotate(10deg);opacity:0;}
+    .fade-bg{
+      position:fixed;
+      inset:0;
+      background:rgba(255,255,255,0.12);
+      display:none;
+      z-index:99990;
+      backdrop-filter:blur(2px);
+    }
 
-}
+    @media (max-width:600px){
+      .start h1{
+        font-size:42px;
+        min-height:60px;
+      }
 
-/* final box */
+      .container h2{
+        font-size:44px;
+      }
 
-.final{
+      .buttons{
+        bottom:72px;
+        width:min(94vw,360px);
+      }
 
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+      button,
+      .startYes,.startNo{
+        font-size:17px;
+        padding:12px 20px;
+      }
 
-font-family:'Great Vibes';
-font-size:45px;
-color:white;
+      .photo{
+        width:112px;
+      }
 
-background:rgba(0,0,0,0.85);
-
-padding:30px 40px;
-border-radius:20px;
-
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
-
-display:none;
-z-index:99999;
-
-}
-
-/* kalpler */
-
-.heart{
-position:absolute;
-font-size:28px;
-animation:float 4s linear infinite;
-}
-
-@keyframes float{
-
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-900px);opacity:0;}
-
-}
-
-</style>
+      .final{
+        font-size:38px;
+        padding:24px 22px;
+        width:min(90vw,420px);
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<audio id="music" loop>
-<source src="muzik.mp3" type="audio/mpeg">
-</audio>
-
-<!-- başlangıç -->
-
-<div class="start" id="startScreen">
-
-<h1 id="typeText"></h1>
-
-<div class="startButtons">
-
-<button class="startYes" onclick="startSite()">Evet</button>
-<button class="startNo" onclick="startSite()">Sorucam kaçarın yok</button>
-
-</div>
-
-</div>
-
-<!-- ana ekran -->
-
-<div class="container" id="mainSite">
-
-<h2>Barışalım mı? 🤍</h2>
-
-<div class="buttons">
-
-<button id="yes">Evet</button>
-<button id="no">Hayır</button>
-
-</div>
-
-</div>
-
-<div class="final" id="finalText">
-Biliyodum barışacağını zaten 🤍
-</div>
-
-<script>
-
-let music=document.getElementById("music")
-let yesBtn=document.getElementById("yes")
-let noBtn=document.getElementById("no")
-let finalText=document.getElementById("finalText")
-
-let grow=0
-
-function startSite(){
-
-document.getElementById("startScreen").style.display="none"
-document.getElementById("mainSite").style.display="block"
-
-music.play()
-
-}
-
-/* yazı animasyonu */
-
-let text="Sana bir şey sorabilir miyim?"
-let i=0
-
-function typeWriter(){
-
-if(i<text.length){
-
-document.getElementById("typeText").innerHTML+=text.charAt(i)
-
-i++
-
-setTimeout(typeWriter,60)
-
-}
-
-}
-
-typeWriter()
-
-/* foto listesi */
-
-let images=[
-"1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg",
-"7.jpeg","8.jpeg","9.jpeg","10.jpeg","11.jpeg","12.jpeg",
-"13.jpeg","14.jpeg","15.jpeg","16.jpeg","17.jpeg","18.jpeg"
-]
-
-let texts=[
-"Bir daha düşün bence 🙂",
-"Buna da mı hayır diyeceksin?",
-"Bak ne kadar tatlıyız 🤍",
-"Tam emin misin?",
-"Bence evet daha mantıklı",
-"Hayır demek zorunda mısın ki",
-"Bir şans daha ver bence",
-"Bu fotoğrafa da mı hayır?"
-]
-
-/* hayır butonu */
-
-noBtn.onclick=()=>{
-
-grow+=20
-yesBtn.style.fontSize=(18+grow)+"px"
-
-/* ekran dışına gitmez */
-
-let x=Math.random()*(window.innerWidth-150)
-let y=Math.random()*(window.innerHeight-250)
-
-noBtn.style.position="fixed"
-noBtn.style.left=x+"px"
-noBtn.style.top=y+"px"
-
-showPhoto()
-
-}
-
-/* foto çıkar */
-
-function showPhoto(){
-
-let img=images[Math.floor(Math.random()*images.length)]
-let text=texts[Math.floor(Math.random()*texts.length)]
-
-let div=document.createElement("div")
-div.className="photo"
-
-/* rastgele konum */
-
-let x=Math.random()*(window.innerWidth-150)
-let y=Math.random()*(window.innerHeight-200)
-
-div.style.left=x+"px"
-div.style.top=y+"px"
-
-/* foto eğimi */
-
-let rotate=Math.random()*30-15
-
-div.style.transform="rotate("+rotate+"deg)"
-
-div.innerHTML=`
-<img src="${img}">
-<div class="caption">${text}</div>
-`
-
-document.body.appendChild(div)
-
-}
-
-/* evet */
-
-yesBtn.onclick=()=>{
-
-document.getElementById("mainSite").style.display="none"
-
-finalText.style.display="block"
-
-startHearts()
-
-}
-
-/* kalpler */
-
-function startHearts(){
-
-setInterval(()=>{
-
-let heart=document.createElement("div")
-
-heart.className="heart"
-
-heart.innerHTML="❤️"
-
-heart.style.left=Math.random()*100+"%"
-
-heart.style.bottom="-50px"
-
-document.body.appendChild(heart)
-
-},200)
-
-}
-
-</script>
-
+  <audio id="music" loop>
+    <source src="muzik.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="fade-bg" id="fadeBg"></div>
+
+  <div class="start" id="startScreen">
+    <h1 id="typeText"></h1>
+    <div class="startButtons">
+      <button class="startYes" onclick="startSite()">Evet</button>
+      <button class="startNo" onclick="startSite()">Sorucam kaçarın yok</button>
+    </div>
+  </div>
+
+  <div class="container" id="mainSite">
+    <h2>Barışalım mı? 🤍</h2>
+    <div class="buttons" id="buttonWrap">
+      <button id="yes">Evet</button>
+      <button id="no">Hayır</button>
+    </div>
+  </div>
+
+  <div class="final" id="finalText">Biliyodum barışacağını zaten 🤍</div>
+
+  <script>
+    const music = document.getElementById("music");
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const finalText = document.getElementById("finalText");
+    const fadeBg = document.getElementById("fadeBg");
+    const mainSite = document.getElementById("mainSite");
+    const buttonWrap = document.getElementById("buttonWrap");
+
+    let grow = 0;
+    let photosShown = [];
+    let heartInterval = null;
+
+    const images = [
+      "1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg",
+      "7.jpeg","8.jpeg","9.jpeg","10.jpeg","11.jpeg","12.jpeg",
+      "13.jpeg","14.jpeg","15.jpeg","16.jpeg","17.jpeg","18.jpeg"
+    ];
+
+    const texts = [
+      "Bir daha düşün bence 🙂",
+      "Buna da mı hayır diyeceksin?",
+      "Bak ne kadar tatlıyız 🤍",
+      "Tam emin misin?",
+      "Bence evet daha mantıklı",
+      "Hayır demek zorunda mısın ki",
+      "Bir şans daha ver bence",
+      "Bu fotoğrafa da mı hayır?"
+    ];
+
+    function startSite(){
+      document.getElementById("startScreen").style.display = "none";
+      mainSite.style.display = "block";
+
+      const yesRect = yesBtn.getBoundingClientRect();
+      noBtn.style.left = (yesRect.right + 12) + "px";
+      noBtn.style.top = yesRect.top + "px";
+
+      music.play().catch(() => {});
+    }
+
+    const text = "Sana bir şey sorabilir miyim?";
+    let i = 0;
+
+    function typeWriter(){
+      if(i < text.length){
+        document.getElementById("typeText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 60);
+      }
+    }
+    typeWriter();
+
+    function randomFrom(arr){
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function moveNoButton(){
+      const btnW = noBtn.offsetWidth || 90;
+      const btnH = noBtn.offsetHeight || 44;
+
+      const minX = 12;
+      const maxX = window.innerWidth - btnW - 12;
+
+      const topLimit = 90;
+      const bottomReserved = 130;
+      const minY = topLimit;
+      const maxY = window.innerHeight - btnH - bottomReserved;
+
+      const safeMaxX = Math.max(minX, maxX);
+      const safeMaxY = Math.max(minY, maxY);
+
+      const x = Math.random() * (safeMaxX - minX) + minX;
+      const y = Math.random() * (safeMaxY - minY) + minY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    noBtn.onclick = () => {
+      grow += 20;
+      yesBtn.style.fontSize = (18 + grow) + "px";
+      yesBtn.style.transform = "scale(1.02)";
+
+      moveNoButton();
+      showPhoto();
+    };
+
+    function showPhoto(){
+      const img = randomFrom(images);
+      const text = randomFrom(texts);
+
+      const div = document.createElement("div");
+      div.className = "photo";
+
+      const width = window.innerWidth <= 600 ? 112 : 130;
+      const photoHeightApprox = width * 1.45;
+
+      const x = Math.random() * Math.max(20, (window.innerWidth - width - 20)) + 10;
+      const y = Math.random() * Math.max(40, (window.innerHeight - photoHeightApprox - 150)) + 50;
+      const rotate = Math.random() * 28 - 14;
+
+      div.style.left = x + "px";
+      div.style.top = y + "px";
+      div.style.transform = `rotate(${rotate}deg)`;
+
+      div.innerHTML = `
+        <img src="${img}" alt="">
+        <div class="caption">${text}</div>
+      `;
+
+      document.body.appendChild(div);
+      photosShown.push(div);
+    }
+
+    yesBtn.onclick = () => {
+      buttonWrap.style.display = "none";
+      fadeBg.style.display = "block";
+
+      arrangePhotosAsHeart();
+      startHearts();
+
+      setTimeout(() => {
+        finalText.style.display = "block";
+      }, 350);
+    };
+
+    function arrangePhotosAsHeart(){
+      if(photosShown.length === 0){
+        showPhoto();
+        showPhoto();
+        showPhoto();
+      }
+
+      const count = photosShown.length;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2 + 10;
+      const scale = Math.min(window.innerWidth, window.innerHeight) * 0.017;
+
+      photosShown.forEach((photo, index) => {
+        const t = (Math.PI * 2 * index) / count;
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+
+        const px = centerX + x * scale - photo.offsetWidth / 2;
+        const py = centerY + y * scale - photo.offsetHeight / 2;
+
+        photo.style.transition = "left 0.9s ease, top 0.9s ease, transform 0.9s ease";
+        photo.style.left = px + "px";
+        photo.style.top = py + "px";
+        photo.style.transform = `rotate(${Math.random() * 16 - 8}deg)`;
+        photo.style.zIndex = "99991";
+      });
+    }
+
+    function startHearts(){
+      if(heartInterval) return;
+
+      heartInterval = setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-20px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3800);
+      }, 180);
+    }
+
+    window.addEventListener("resize", () => {
+      const finalOpen = finalText.style.display === "block";
+      if(finalOpen){
+        arrangePhotosAsHeart();
+      } else {
+        const noRect = noBtn.getBoundingClientRect();
+        if(noRect.right > window.innerWidth || noRect.bottom > window.innerHeight){
+          moveNoButton();
+        }
+      }
+    });
+  </script>
 </body>
 </html>
