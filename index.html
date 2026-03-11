@@ -22,7 +22,7 @@ justify-content:center;
 text-align:center;
 }
 
-/* başlangıç */
+/* başlangıç ekranı */
 
 .start h1{
 font-family:'Great Vibes';
@@ -31,6 +31,8 @@ color:#d63384;
 padding:20px;
 }
 
+/* BUTONLAR */
+
 button{
 padding:12px 28px;
 font-size:18px;
@@ -38,6 +40,8 @@ border:none;
 border-radius:15px;
 cursor:pointer;
 margin:10px;
+position:relative;
+z-index:999;
 }
 
 #yes{
@@ -51,6 +55,8 @@ color:white;
 position:absolute;
 }
 
+/* ana ekran */
+
 .container{
 display:none;
 }
@@ -62,7 +68,7 @@ color:#d63384;
 padding:20px;
 }
 
-/* foto kart */
+/* foto kartları */
 
 .photo{
 position:absolute;
@@ -72,6 +78,7 @@ padding:6px;
 border-radius:8px;
 box-shadow:0 8px 20px rgba(0,0,0,0.25);
 animation:story 6s linear;
+z-index:1;
 }
 
 .photo img{
@@ -82,6 +89,8 @@ border-radius:5px;
 .caption{
 font-size:11px;
 }
+
+/* story animasyonu */
 
 @keyframes story{
 
@@ -101,7 +110,7 @@ opacity:0;
 
 }
 
-/* final */
+/* final mesaj */
 
 .final{
 position:absolute;
@@ -187,6 +196,8 @@ music.play()
 
 }
 
+/* foto listesi */
+
 let images=[
 "1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg","6.jpeg",
 "7.jpeg","8.jpeg","9.jpeg","10.jpeg","11.jpeg","12.jpeg",
@@ -203,6 +214,8 @@ let texts=[
 "Bir şans daha ver bence",
 "Bu fotoğrafa da mı hayır?"
 ]
+
+/* hayır butonu kaçma */
 
 function moveNo(){
 
@@ -226,6 +239,8 @@ showPhoto()
 
 }
 
+/* foto çıkar */
+
 function showPhoto(){
 
 let img=images[Math.floor(Math.random()*images.length)]
@@ -245,6 +260,8 @@ document.body.appendChild(div)
 
 }
 
+/* evet */
+
 yesBtn.onclick=()=>{
 
 document.getElementById("mainSite").style.display="none"
@@ -254,6 +271,8 @@ finalText.style.display="block"
 startHearts()
 
 }
+
+/* kalpler */
 
 function startHearts(){
 
