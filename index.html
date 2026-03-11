@@ -40,19 +40,23 @@ border:none;
 border-radius:15px;
 cursor:pointer;
 margin:10px;
-position:relative;
-z-index:999;
+position:fixed;
+z-index:99999;
 }
-
 #yes{
 background:#28a745;
 color:white;
+bottom:120px;
+left:50%;
+transform:translateX(-120%);
 }
 
 #no{
 background:#dc3545;
 color:white;
-position:absolute;
+bottom:120px;
+left:50%;
+transform:translateX(20%);
 }
 
 /* ana ekran */
@@ -298,3 +302,4 @@ document.body.appendChild(heart)
 
 </body>
 </html>
+
