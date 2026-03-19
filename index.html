@@ -1,12 +1,12 @@
-export default function BendeVarLandingPage() { const categories = [ { name: "Elektronik", count: "1.240 aktif talep", icon: "📱" }, { name: "Ev Eşyası", count: "860 aktif talep", icon: "🛋️" }, { name: "Moda", count: "540 aktif talep", icon: "👕" }, { name: "Araç", count: "320 aktif talep", icon: "🚗" }, { name: "Hizmet", count: "910 aktif talep", icon: "🛠️" }, { name: "Emlak", count: "210 aktif talep", icon: "🏠" }, { name: "Eğitim", count: "430 aktif talep", icon: "🎓" }, { name: "Diğer", count: "150 aktif talep", icon: "📦" }, ];
+export default function BendeVarLandingPage() { const categories = [ { name: "Satılık Araç", count: "420 aktif talep", icon: "🚗" }, { name: "Kiralık Araç", count: "180 aktif talep", icon: "🚙" }, { name: "Satılık Konut", count: "350 aktif talep", icon: "🏠" }, { name: "Kiralık Konut", count: "290 aktif talep", icon: "🏢" }, { name: "Arsa", count: "90 aktif talep", icon: "📍" }, { name: "İşyeri", count: "110 aktif talep", icon: "🏬" }, { name: "Ticari Araç", count: "75 aktif talep", icon: "🚛" }, { name: "Projeler", count: "60 aktif talep", icon: "🏗️" }, ];
 
-const requests = [ { title: "Temiz iPhone 13 arıyorum", category: "Elektronik", city: "İstanbul", budget: "20.000 - 24.000 TL", offers: 12, desc: "Kutusuz olabilir, ekran ve pil durumu iyi olsun.", }, { title: "Düğün fotoğrafçısı arıyorum", category: "Hizmet", city: "Ankara", budget: "15.000 - 25.000 TL", offers: 8, desc: "Dış çekim dahil paket teklifleri değerlendiriyorum.", }, { title: "2. el çalışma masası arıyorum", category: "Ev Eşyası", city: "İzmir", budget: "2.000 - 4.000 TL", offers: 5, desc: "Beyaz veya meşe tonlarında, sağlam durumda olsun.", }, { title: "Klima montajı yaptıracağım", category: "Hizmet", city: "Bursa", budget: "1.500 - 3.000 TL", offers: 9, desc: "Hafta içi akşam saatlerinde hizmet verebilen biri lazım.", }, ];
+const requests = [ { title: "2021 ve üzeri otomatik SUV arıyorum", category: "Satılık Araç", city: "İstanbul", budget: "1.200.000 - 1.600.000 TL", offers: 7, desc: "Düşük kilometreli, ekspertiz uygun ve kurumsal galerilerden teklif bekliyorum.", }, { title: "2+1 kiralık daire arıyorum", category: "Kiralık Konut", city: "Ankara", budget: "25.000 - 35.000 TL", offers: 11, desc: "Metroya yakın, aileye uygun ve emlak ofislerinden net şartlı teklifler istiyorum.", }, { title: "Yatırımlık 1+1 satılık daire arıyorum", category: "Satılık Konut", city: "İzmir", budget: "2.500.000 - 3.300.000 TL", offers: 6, desc: "Yeni bina, merkezi konum ve kira getirisi yüksek seçenekler öncelikli.", }, { title: "Hafif ticari araç arıyorum", category: "Ticari Araç", city: "Bursa", budget: "700.000 - 950.000 TL", offers: 4, desc: "Şirket kullanımı için uygun, bakımlı ve kurumsal firmalardan teklif bekliyorum.", }, ];
 
-const steps = [ { number: "01", title: "Talep Aç", text: "Ne aradığını, bütçeni ve konumunu yaz. İstersen görsel de ekle.", }, { number: "02", title: "Teklif Al", text: "Satıcılar sana fiyat, açıklama ve ürün detayları göndersin.", }, { number: "03", title: "Mesajlaş & Anlaş", text: "Uygun kişiyi seç, konuş, pazarlık yap ve anlaşmanı tamamla.", }, ];
+const steps = [ { number: "01", title: "Talep Oluştur", text: "Kullanıcı aradığı araç ya da gayrimenkulü, bütçesini ve konumunu yazar.", }, { number: "02", title: "Firmalar Teklif Versin", text: "Sadece araç galerileri ve gayrimenkul firmaları talebe uygun teklif sunsun.", }, { number: "03", title: "Görüş ve Karşılaştır", text: "Kullanıcı firmalarla iletişime geçsin, teklifleri kıyaslasın ve karar versin.", }, ];
 
-const trustItems = [ "Onaylı kullanıcı profilleri", "Yorum ve puan sistemi", "Güvenli mesajlaşma", "Şikayet ve destek hattı", ];
+const trustItems = [ "Sadece onaylı firmalar", "Firma profil ve puan sistemi", "Güvenli mesajlaşma", "İlan ve teklif denetimi", ];
 
-return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur"> <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6"> <div className="flex items-center gap-3"> <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-600 text-lg font-bold text-white shadow-sm"> BV </div> <div> <p className="text-lg font-extrabold">Bende Var</p> <p className="text-xs text-slate-500">Arayanla satıcıyı buluşturur</p> </div> </div>
+return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur"> <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6"> <div className="flex items-center gap-3"> <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-600 text-lg font-bold text-white shadow-sm"> BV </div> <div> <p className="text-lg font-extrabold">Bende Var</p> <p className="text-xs text-slate-500">Araç ve gayrimenkul teklif platformu</p> </div> </div>
 
 <nav className="hidden items-center gap-6 md:flex">
         <a href="#anasayfa" className="text-sm font-medium text-slate-700 hover:text-blue-600">Ana Sayfa</a>
@@ -30,29 +30,31 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
     <section className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:px-6 md:py-24">
       <div>
         <span className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
-          Ürün ve hizmet talepleri için pazar yeri
+          Sadece araç ve gayrimenkul firmaları için
         </span>
         <h1 className="mt-6 text-4xl font-black leading-tight md:text-6xl">
-          Aradığını yaz, <span className="text-blue-600">satıcılar sana teklif versin</span>
+          Aradığın aracı ya da evi yaz, <span className="text-blue-600">firmalar sana teklif sunsun</span>
         </h1>
         <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 md:text-lg">
-          Ürün, hizmet, ikinci el eşya ya da özel istek fark etmez. Talebini oluştur,
-          sana uygun satıcılardan teklifler gelsin, karşılaştır ve hızlıca iletişime geç.
+          Kullanıcı talebini oluşturur. Onaylı galeriler ve emlak firmaları uygun tekliflerini gönderir.
+          Sen de teklifleri karşılaştırır, firmalarla görüşür ve en iyi seçeneği bulursun.
         </p>
 
         <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
           <div className="grid gap-3 md:grid-cols-[1fr_180px_160px]">
             <input
               className="h-14 rounded-2xl border border-slate-200 px-4 outline-none placeholder:text-slate-400 focus:border-blue-500"
-              placeholder="Ne arıyorsun? Örn: iPhone 13, klima montajı, çalışma masası"
+              placeholder="Ne arıyorsun? Örn: 2+1 kiralık daire, otomatik SUV"
             />
-            <select className="h-14 rounded-2xl border border-slate-200 px-4 text-slate-600 outline-none focus:border-blue-500">
-              <option>Kategori seç</option>
-              <option>Elektronik</option>
-              <option>Ev Eşyası</option>
-              <option>Moda</option>
-              <option>Hizmet</option>
-              <option>Emlak</option>
+            <select className="h-14 rounded-2xl border border-slate-200 px-4 text-slate-600 outline-none focus:border-blue-500" defaultValue="">
+              <option value="" disabled>
+                Kategori seç
+              </option>
+              <option>Satılık Araç</option>
+              <option>Kiralık Araç</option>
+              <option>Satılık Konut</option>
+              <option>Kiralık Konut</option>
+              <option>Arsa</option>
             </select>
             <button className="h-14 rounded-2xl bg-blue-600 px-6 text-sm font-bold text-white hover:bg-blue-700">
               Talep Oluştur
@@ -65,7 +67,7 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
             Talepleri İncele
           </button>
           <button className="rounded-2xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100">
-            Satıcı Olarak Katıl
+            Firma Olarak Katıl
           </button>
         </div>
       </div>
@@ -80,38 +82,38 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
               <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                 <div>
                   <p className="text-sm text-slate-500">Aktif talep</p>
-                  <h3 className="text-lg font-bold">Temiz iPhone 13 arıyorum</h3>
+                  <h3 className="text-lg font-bold">2021 ve üzeri otomatik SUV arıyorum</h3>
                 </div>
                 <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700">
-                  12 teklif geldi
+                  7 firma teklif verdi
                 </span>
               </div>
 
               <div className="mt-4 space-y-3">
                 <div className="rounded-2xl bg-slate-50 p-4">
                   <div className="flex items-center justify-between">
-                    <p className="font-semibold">Teklif 1</p>
-                    <span className="text-sm font-bold text-blue-600">22.500 TL</span>
+                    <p className="font-semibold">Yıldız Oto Galeri</p>
+                    <span className="text-sm font-bold text-blue-600">1.420.000 TL</span>
                   </div>
                   <p className="mt-1 text-sm text-slate-600">
-                    Bende var, temiz kullanıldı. Kutu ve şarj kablosu mevcut.
+                    Düşük kilometreli, ekspertiz raporlu ve takas destekli araç sunuyoruz.
                   </p>
                 </div>
 
                 <div className="rounded-2xl bg-slate-50 p-4">
                   <div className="flex items-center justify-between">
-                    <p className="font-semibold">Teklif 2</p>
-                    <span className="text-sm font-bold text-blue-600">23.000 TL</span>
+                    <p className="font-semibold">Merkez Auto</p>
+                    <span className="text-sm font-bold text-blue-600">1.465.000 TL</span>
                   </div>
                   <p className="mt-1 text-sm text-slate-600">
-                    Pil sağlığı yüksek, yüz yüze teslim edebilirim.
+                    Yetkili servis bakımlı, kurumsal galeriden güvenli satış seçeneği.
                   </p>
                 </div>
 
                 <div className="rounded-2xl border border-blue-200 bg-blue-50 p-4">
-                  <p className="text-sm font-semibold text-blue-700">Mesajlaşma başladı</p>
+                  <p className="text-sm font-semibold text-blue-700">Firma görüşmesi başladı</p>
                   <p className="mt-1 text-sm text-slate-700">
-                    “Merhaba, cihazın fotoğraflarını gönderebilir misiniz?”
+                    Merhaba, ekspertiz raporunu ve araç fotoğraflarını hemen paylaşabiliriz.
                   </p>
                 </div>
               </div>
@@ -125,7 +127,7 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
       <div className="mb-8 flex items-end justify-between">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">Kategoriler</p>
-          <h2 className="mt-2 text-3xl font-black">Hızlı kategori seç</h2>
+          <h2 className="mt-2 text-3xl font-black">Araç ve gayrimenkul kategorileri</h2>
         </div>
         <button className="hidden rounded-2xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 md:block">
           Tümünü Gör
@@ -151,7 +153,7 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
     <section id="nasil-calisir" className="mx-auto max-w-7xl px-4 py-16 md:px-6">
       <div className="text-center">
         <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">Nasıl çalışır?</p>
-        <h2 className="mt-2 text-3xl font-black md:text-4xl">3 adımda kullan</h2>
+        <h2 className="mt-2 text-3xl font-black md:text-4xl">3 adımda firma teklifi al</h2>
       </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -169,7 +171,7 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
       <div className="mb-8 flex items-end justify-between">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">Öne çıkan talepler</p>
-          <h2 className="mt-2 text-3xl font-black">Yeni açılan talepler</h2>
+          <h2 className="mt-2 text-3xl font-black">Kullanıcıların açtığı talepler</h2>
         </div>
         <button className="hidden rounded-2xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 md:block">
           Tüm talepleri gör
@@ -205,7 +207,7 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
                 Detay
               </button>
               <button className="flex-1 rounded-2xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white hover:bg-blue-700">
-                Teklif Ver
+                Firma Teklifleri
               </button>
             </div>
           </div>
@@ -219,11 +221,11 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-blue-300">Güven</p>
             <h2 className="mt-3 text-3xl font-black md:text-4xl">
-              Kullanıcıların rahatça iletişime geçebileceği güvenli yapı
+              Sadece onaylı firmalarla güvenli teklif süreci
             </h2>
             <p className="mt-4 max-w-2xl text-slate-300 leading-7">
-              Profil doğrulama, yorum sistemi ve şikayet desteği ile alıcı ve satıcıyı aynı
-              platformda güvenle buluştur.
+              Galeriler ve emlak firmaları doğrulandıktan sonra platforma katılır. Kullanıcılar
+              teklifler, firma profilleri ve görüşme geçmişi üzerinden karar verir.
             </p>
           </div>
 
@@ -245,17 +247,17 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
       <div className="rounded-[32px] border border-slate-200 bg-white px-6 py-10 text-center shadow-sm md:px-10 md:py-14">
         <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">Hemen başla</p>
         <h2 className="mt-3 text-3xl font-black md:text-5xl">
-          Talep oluştur, doğru satıcı sana ulaşsın
+          Talebini oluştur, firmalar sana doğrudan teklif sunsun
         </h2>
         <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-600">
-          Ürün ya da hizmet fark etmez. İhtiyacını yaz, teklifleri topla, karşılaştır ve en uygun kişiyle iletişime geç.
+          Araç ya da gayrimenkul ihtiyacını yaz. Doğrulanmış firmalardan gelen teklifleri tek yerde karşılaştır.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <button className="rounded-2xl bg-blue-600 px-6 py-3 text-sm font-bold text-white hover:bg-blue-700">
             Talep Aç
           </button>
           <button className="rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-100">
-            Satıcı Olarak Katıl
+            Firma Kaydı
           </button>
         </div>
       </div>
@@ -271,11 +273,11 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
           </div>
           <div>
             <p className="font-extrabold">Bende Var</p>
-            <p className="text-sm text-slate-500">Talep ve teklif platformu</p>
+            <p className="text-sm text-slate-500">Araç ve gayrimenkul teklif platformu</p>
           </div>
         </div>
         <p className="mt-4 text-sm leading-6 text-slate-600">
-          Arayanla satıcıyı aynı yerde buluşturan sade ve modern pazar yeri deneyimi.
+          Kullanıcılarla doğrulanmış araç ve gayrimenkul firmalarını bir araya getiren teklif platformu.
         </p>
       </div>
 
@@ -284,7 +286,7 @@ return ( <div className="min-h-screen bg-slate-50 text-slate-900"> <header class
         <ul className="mt-4 space-y-3 text-sm text-slate-600">
           <li>Hakkımızda</li>
           <li>İletişim</li>
-          <li>Kariyer</li>
+          <li>Firma Başvurusu</li>
         </ul>
       </div>
 
